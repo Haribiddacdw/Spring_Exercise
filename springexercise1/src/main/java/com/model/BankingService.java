@@ -1,5 +1,4 @@
 package com.model;
-
 import javax.naming.InsufficientResourcesException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,8 @@ public class BankingService {
 		dto.setAmount(newamt);
 		dao.updateAccounts(dto);
 	}
-	@Transactional(propagation = Propagation.SUPPORTS,rollbackFor = {InsufficientBalance.class})
+	
+	@Transactional(propagation = Propagation.REQUIRED,rollbackFor = {InsufficientBalance.class})
 	public void doDebit(int acid,int dramt)throws InsufficientBalance {
 		AccountsDTO dto=dao.findByID(acid);
 		int amt=dto.getAmount();

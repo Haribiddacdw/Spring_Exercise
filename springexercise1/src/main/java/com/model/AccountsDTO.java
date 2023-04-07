@@ -8,7 +8,6 @@ import javax.persistence.Table;
 public class AccountsDTO {
 	
 	@Id
-
 	private int acid;
 	private int amount;
 	public int getId() {
