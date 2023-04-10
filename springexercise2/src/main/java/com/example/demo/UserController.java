@@ -2,12 +2,7 @@ package com.example.demo;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.context.ApplicationContext;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,27 +13,45 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping("/users")
+/**
+* The class User controller
+*/ 
 public class UserController {
 	
-	@RequestMapping(value = "user1", method = RequestMethod.GET)
+	/** 
+	 * User one
+	 */
+	@RequestMapping(value = "1", method = RequestMethod.GET)
 	public void userOne()
 	{
 		System.out.println("I'm User One");
 	}
 	
-	@RequestMapping(value = "user2",method = RequestMethod.GET)
+	/** 
+	 * User two
+	 * @return String
+	 */
+	@RequestMapping(value = "2",method = RequestMethod.GET)
 	public String userTwo()
 	{
 		return "I'm User Two";
 	}
 	
-	@RequestMapping(value = "user3",method = RequestMethod.GET)
+	/** 
+	 * User three
+	 * @return ResponseEntity<String>
+	 */
+	@RequestMapping(value = "3",method = RequestMethod.GET)
 	public ResponseEntity<String> userThree()
 	{
 		return ResponseEntity.ok("Hello I'm User Three");
 	}
 	
-	@RequestMapping(value = "user4",method = RequestMethod.GET)
+	/** 
+	 * User four
+	 * @return ModelAndView
+	 */
+	@RequestMapping(value = "4",method = RequestMethod.GET)
 	public ModelAndView userFour()
 	{
 		ModelAndView mandv = new ModelAndView();
@@ -47,7 +60,12 @@ public class UserController {
 		return mandv;
 	}
 	
-	@RequestMapping(value = "user5",method = RequestMethod.GET)
+	/** 
+	 * User five
+	 * @param mandv  the mandv. 
+	 * @return ModelAndView
+	 */
+	@RequestMapping(value = "5",method = RequestMethod.GET)
 	public ModelAndView userFive(ModelAndView mandv)
 	{
 		mandv.addObject("usermessage", "Hello I'm User Five");
@@ -55,17 +73,23 @@ public class UserController {
 		return mandv;
 	}
 	
-	@RequestMapping(value = "user6",method = RequestMethod.GET)
+	/**
+	 * User six
+	 * @param mandv  the mandv. 
+	 * @param request  the request. 
+	 * @return ModelAndView
+	 */
+	@RequestMapping(value = "6",method = RequestMethod.GET)
 	public ModelAndView userSix(ModelAndView mandv,HttpServletRequest request)
 	{
 		mandv.addObject("usermessage","Hello I'm User Six From MODEL AND VIEW");
 		mandv.setViewName("userPage");
 		HttpSession session = request.getSession();
-		
 		request.setAttribute("usermessage1", "Hello I'm User Six From Http Request Object");
 		session.setAttribute("usermessage2", "Hello I'm User Six From session object");
 		return mandv;
 	}
+	
 	
 	@RequestMapping(value = "repeat",method = RequestMethod.GET)
 	public ModelAndView userSixRepeat(ModelAndView mandv,HttpServletRequest request)
@@ -76,23 +100,42 @@ public class UserController {
 		return mandv;
 	}
 	
-	@RequestMapping(value = "user/{name}", method = RequestMethod.GET)
-	public ModelAndView userId(@PathVariable String name,ModelAndView mandv) {
+	/** 
+	 * User identifier
+	 * @param name  the name.  It is PathVariable 
+	 * @param mandv  the mandv. 
+	 * @return ModelAndView
+	 */
+	@RequestMapping(value = "{id}/{name}", method = RequestMethod.GET)
+	public ModelAndView userId(@PathVariable String id,@PathVariable String name,ModelAndView mandv) {
 		
-		mandv.addObject("usermessage",name);
+		mandv.addObject("userid",id);
+		mandv.addObject("username",name);
 		mandv.setViewName("userDetail");
 		return mandv;
 	}
 	
-	@RequestMapping(value = "user8", method = RequestMethod.GET)
+	/** 
+	 * User identifier
+	 * @param uname  the username.  It is PathVariable 
+	 * @param mandv  the mandv. 
+	 * @return ModelAndView
+	 */
+	@RequestMapping(value = "8", method = RequestMethod.GET)
 	public ModelAndView userEight(@RequestParam("uname") String name,ModelAndView mandv) {
-		mandv.addObject("usermessage",name);
+		mandv.addObject("userid",8);
+		mandv.addObject("username",name);
 		mandv.setViewName("userDetail");
 		return mandv;
 	}
 	
 	
-	@RequestMapping(value ="user9",method = RequestMethod.GET)
+	/** 
+	 * User Nine
+	 * return User Object it will displayed as JSON
+	 * @return ResponseEntity<String>
+	 */
+	@RequestMapping(value ="9",method = RequestMethod.GET)
 	public ResponseEntity<User> userNine()
 	{
 		User user= new User();
@@ -101,7 +144,13 @@ public class UserController {
 		return ResponseEntity.ok(user);
 	}
 	
-	@RequestMapping(value="user10",method = RequestMethod.POST)
+	/** 
+	 * User10
+	 * Passing User Object in Body as JSON 
+	 * Here we updating those values and return that object
+	 * @return ResponseEntity<String>
+	 */
+	@RequestMapping(value="10",method = RequestMethod.POST)
 	public ResponseEntity<User> userTen(@RequestBody User user)
 	{
 		user.setUid(10);
@@ -109,7 +158,11 @@ public class UserController {
 		return ResponseEntity.ok(user);
 	}
 	
-	@RequestMapping(value="user11",method = RequestMethod.POST)
+	/** 
+	 * User11 
+	 * @return User Object
+	 */
+	@RequestMapping(value="11",method = RequestMethod.POST)
 	public User userElevan(@RequestBody User user)
 	{
 		return user;

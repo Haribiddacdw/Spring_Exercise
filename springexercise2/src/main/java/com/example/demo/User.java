@@ -1,23 +1,55 @@
 package com.example.demo;
 
+/**
+ * The class User
+ */
 public class User {
-	 int id;
-	    String uname;
-		public void setUid(int i) {
-			this.id = i;
-			
-		}
+	int id;
+	String uname;
 
-		public void setUname(String string) {
-			this.uname = string;
-			
-		}
+	/**
+	 *
+	 * Sets the uid
+	 * 
+	 * @param id the id.
+	 */
+	public void setUid(int id) {
 
-		public int getId() {
-			return id;
-		}
+		this.id = id;
 
-		public String getUname() {
-			return uname;
-		}
+	}
+
+	/**
+	 *
+	 * Sets the uname
+	 *
+	 * @param string the string.
+	 */
+	public void setUname(String string) {
+
+		this.uname = string;
+
+	}
+
+	/**
+	 *
+	 * Gets the identifier
+	 *
+	 * @return the identifier
+	 */
+	public int getId() {
+
+		return id;
+	}
+
+	/**
+	 *
+	 * Gets the uname
+	 *
+	 * @return the uname
+	 */
+	public String getUname() {
+
+		return uname;
+	}
 }
