@@ -3,6 +3,12 @@ package com.example.demo;
 import java.util.Optional;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.example.exception.InsufficientBalanceException;
+import com.example.exception.InvalidUserException;
+import com.example.model.BankDAO;
+import com.example.model.BankDTO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -68,34 +74,3 @@ public class BankServiceImplementation implements BankService {
 }
 
 
-/* 
- * InsufficientBalanceException Class 
- * */
-class InsufficientBalanceException extends Exception{
-	String errorMessage;
-
-	public InsufficientBalanceException(String errorMessage) {
-		this.errorMessage = errorMessage;
-	}
-	@Override
-	public String toString() {
-		return errorMessage;
-	}
-}
-
-/* 
- * 
- * InvalidUser Exception Class 
- * */
- 
-class InvalidUserException extends Exception{
-	String errorMessage;
-	InvalidUserException(String errorMessage)
-	{
-		this.errorMessage = errorMessage;
-	}
-	@Override
-	public String toString() {
-		return errorMessage;
-	}
-}

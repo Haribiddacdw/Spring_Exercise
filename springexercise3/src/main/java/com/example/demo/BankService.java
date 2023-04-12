@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import com.example.exception.InsufficientBalanceException;
+import com.example.exception.InvalidUserException;
+import com.example.model.BankDTO;
 
 public interface BankService {
 	public int checkUser(int crid, int dbid);
@@ -10,5 +13,5 @@ public interface BankService {
 
 	public void doCredit(int crid, int cramt);
 
-	public void doDebit(int dbid, int dramt) throws InsufficientBalanceException;
+	public void doDebit(int dbid, int dramt) throws InsufficientBalanceException, InsufficientBalanceException;
 }

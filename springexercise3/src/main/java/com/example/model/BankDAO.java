@@ -1,14 +1,16 @@
-package com.example.demo;
+package com.example.model;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 /** 
  * BankDAO Interface that Extends JPA RESPOSITORY
  * @params BankDTO 
  * @params BankDTO DataType as Primary Key
  * */
+@Repository("bank")
 public interface BankDAO  extends JpaRepository<BankDTO, Integer> {
 	/** 
 	 * findByExists method check that users are valid or not
