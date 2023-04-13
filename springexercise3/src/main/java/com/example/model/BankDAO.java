@@ -16,7 +16,7 @@ public interface BankDAO  extends JpaRepository<BankDTO, Integer> {
 	 * findByExists method check that users are valid or not
 	 * */
 	@Query("select COUNT(*) from BankDTO where id In(?1,?2)")
-	public int findByExists(int crid, int dbid);
+	public int findByExists(int creditId, int debitId);
 
 	
 	/** 

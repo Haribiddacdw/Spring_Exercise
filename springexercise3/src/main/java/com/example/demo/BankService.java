@@ -5,13 +5,13 @@ import com.example.exception.InvalidUserException;
 import com.example.model.BankDTO;
 
 public interface BankService {
-	public int checkUser(int crid, int dbid);
+	public int checkUser(int creditId, int debitId);
 
 	public BankDTO getUser(int id);
 
-	public String moneyTransfer(int crid, int dbid, int amount) throws InvalidUserException, InsufficientBalanceException;
+	public String moneyTransfer(int creditId, int debitId, int amount) throws InvalidUserException, InsufficientBalanceException;
 
-	public void doCredit(int crid, int cramt);
+	public void doCredit(int creditId, int creditAmount);
 
-	public void doDebit(int dbid, int dramt) throws InsufficientBalanceException, InsufficientBalanceException;
+	public void doDebit(int debitId, int debitAmount) throws InsufficientBalanceException, InsufficientBalanceException;
 }

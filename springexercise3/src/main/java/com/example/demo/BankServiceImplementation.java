@@ -28,9 +28,9 @@ public class BankServiceImplementation implements BankService {
 	}
 
 	@Override
-	public int checkUser(int crid, int dbid) {
+	public int checkUser(int creditId, int debitId) {
 
-		return dao.findByExists(crid, dbid);
+		return dao.findByExists(creditId, debitId);
 	}
 
 	@Override
